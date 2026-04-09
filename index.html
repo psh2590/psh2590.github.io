@@ -5,49 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Piyush Pandey | Portfolio</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
+* {margin:0; padding:0; box-sizing:border-box;}
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
   color: white;
 }
 
 header {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
 }
 
-h1 {
-  font-size: 40px;
+header h1 {
+  font-size: 48px;
 }
 
-h2 {
-  color: #38bdf8;
+header p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #94a3b8;
 }
 
 .section {
-  padding: 40px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
+  padding: 40px 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #38bdf8;
 }
 
 .card {
   background: #1e293b;
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 10px;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 a {
   color: #38bdf8;
-  text-decoration: none;
 }
 
 footer {
   text-align: center;
-  padding: 20px;
-  opacity: 0.7;
+  padding: 30px;
+  opacity: 0.6;
+}
+
+@media(max-width:768px){
+  .grid {grid-template-columns: 1fr;}
 }
 </style>
 
@@ -56,40 +80,45 @@ footer {
 <body>
 
 <header>
-  <h1>👋 Hi, I'm Piyush Pandey</h1>
-  <p>🚀 Tech Lead | AI/ML Enthusiast | 13+ Years Experience</p>
+  <h1>🚀 Piyush Pandey</h1>
+  <p>Tech Lead | AI/ML Enthusiast | 13+ Years Experience</p>
 </header>
 
 <div class="section">
-  <h2>🚀 About Me</h2>
-  <div class="card">
-    <p>Tech Lead at Bank of America with 13+ years of experience in Banking & Healthcare systems.</p>
-    <p>Currently transitioning into AI & Machine Learning while building automation tools.</p>
-  </div>
 
-  <h2>🛠️ Tech Stack</h2>
-  <div class="card">
-    <p>COBOL | CICS | JCL | DB2 | Teradata | Python | Hadoop | Hive</p>
-  </div>
+<h2>🚀 About Me</h2>
+<div class="card">
+  <p>Experienced Tech Lead at Bank of America with strong background in Banking & Healthcare systems.</p>
+  <p>Currently transitioning into AI & Machine Learning and building intelligent automation solutions.</p>
+</div>
 
-  <h2>🏆 Achievements</h2>
-  <div class="card">
-    <p>🏆 4x Delivery Excellence Award</p>
-    <p>⚡ Automation reduced effort by 70%</p>
-  </div>
+<h2>🛠️ Skills</h2>
+<div class="grid">
+  <div class="card">COBOL / CICS / JCL</div>
+  <div class="card">Python / Hadoop / Hive</div>
+  <div class="card">DB2 / Teradata</div>
+  <div class="card">Automation (REXX)</div>
+</div>
 
-  <h2>🚀 Projects</h2>
-  <div class="card">
-    <p>🔹 AI PDF Analyzer (Coming Soon)</p>
-    <p>🔹 Automation Tools</p>
-  </div>
+<h2>🏆 Achievements</h2>
+<div class="card">
+  <p>🏆 4x Delivery Excellence Award</p>
+  <p>⚡ Built automation reducing effort by 70%</p>
+</div>
 
-  <h2>📫 Contact</h2>
-  <div class="card">
-    <p>Email: piyush.pandey25@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/psh2590">psh2590</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/piyush-pandey-8b075457">Profile</a></p>
-  </div>
+<h2>🚀 Projects</h2>
+<div class="grid">
+  <div class="card">AI PDF Analyzer (Upcoming)</div>
+  <div class="card">Automation Tools</div>
+</div>
+
+<h2>📫 Contact</h2>
+<div class="card">
+  <p>Email: piyush.pandey25@gmail.com</p>
+  <p>GitHub: <a href="https://github.com/psh2590">psh2590</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/piyush-pandey-8b075457">Profile</a></p>
+</div>
+
 </div>
 
 <footer>
