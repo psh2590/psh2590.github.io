@@ -9,31 +9,60 @@
 
 <style>
 * {margin:0; padding:0; box-sizing:border-box;}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg,#0f172a,#1e293b);
+  background: #0f172a;
   color: white;
+  scroll-behavior: smooth;
 }
 
+/* NAVBAR /
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(15,23,42,0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  z-index: 1000;
+}
+
+nav a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/ HERO /
 header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
   text-align: center;
-  padding: 80px 20px;
 }
 
 header h1 {
-  font-size: 48px;
+  font-size: 55px;
+  animation: fadeIn 2s ease-in-out;
 }
 
 header p {
   margin-top: 10px;
-  font-size: 18px;
   color: #94a3b8;
 }
 
+/ SECTIONS /
 .section {
+  padding: 80px 20px;
   max-width: 1000px;
   margin: auto;
-  padding: 40px 20px;
 }
 
 h2 {
@@ -41,37 +70,55 @@ h2 {
   color: #38bdf8;
 }
 
+/ CARDS /
 .card {
   background: #1e293b;
   padding: 25px;
   border-radius: 12px;
   margin-bottom: 20px;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
+/ GRID /
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-a {
-  color: #38bdf8;
+/ ANIMATION /
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/ FOOTER /
 footer {
   text-align: center;
   padding: 30px;
   opacity: 0.6;
 }
 
+/ MOBILE /
 @media(max-width:768px){
   .grid {grid-template-columns: 1fr;}
+  header h1 {font-size: 35px;}
 }
 </style>
 
@@ -79,19 +126,31 @@ footer {
 
 <body>
 
+<!-- NAV -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
 <header>
   <h1>🚀 Piyush Pandey</h1>
-  <p>Tech Lead | AI/ML Enthusiast | 13+ Years Experience</p>
+  <p id="typing"></p>
 </header>
 
-<div class="section">
-
+<!-- ABOUT -->
+<div class="section fade" id="about">
 <h2>🚀 About Me</h2>
 <div class="card">
-  <p>Experienced Tech Lead at Bank of America with strong background in Banking & Healthcare systems.</p>
+  <p>Tech Lead at Bank of America with 13+ years of experience in Banking & Healthcare systems.</p>
   <p>Currently transitioning into AI & Machine Learning and building intelligent automation solutions.</p>
 </div>
+</div>
 
+<!-- SKILLS -->
+<div class="section fade" id="skills">
 <h2>🛠️ Skills</h2>
 <div class="grid">
   <div class="card">COBOL / CICS / JCL</div>
@@ -99,31 +158,74 @@ footer {
   <div class="card">DB2 / Teradata</div>
   <div class="card">Automation (REXX)</div>
 </div>
-
-<h2>🏆 Achievements</h2>
-<div class="card">
-  <p>🏆 4x Delivery Excellence Award</p>
-  <p>⚡ Built automation reducing effort by 70%</p>
 </div>
 
+<!-- PROJECTS -->
+<div class="section fade" id="projects">
 <h2>🚀 Projects</h2>
 <div class="grid">
-  <div class="card">AI PDF Analyzer (Upcoming)</div>
+  <div class="card">AI PDF Analyzer (Coming Soon)</div>
   <div class="card">Automation Tools</div>
 </div>
+</div>
 
+<!-- CONTACT -->
+<div class="section fade" id="contact">
 <h2>📫 Contact</h2>
 <div class="card">
   <p>Email: piyush.pandey25@gmail.com</p>
   <p>GitHub: <a href="https://github.com/psh2590">psh2590</a></p>
   <p>LinkedIn: <a href="https://www.linkedin.com/in/piyush-pandey-8b075457">Profile</a></p>
 </div>
-
 </div>
 
 <footer>
   <p>© 2026 Piyush Pandey</p>
 </footer>
+
+<script>
+
+/ Typing Effect /
+const text = ["Tech Lead", "AI/ML Enthusiast", "Automation Expert"];
+let i=0, j=0, current="", isDeleting=false;
+
+function type() {
+  if(i < text.length) {
+    if(!isDeleting && j <= text[i].length) {
+      current = text[i].substring(0,j++);
+    } else if(isDeleting && j >= 0) {
+      current = text[i].substring(0,j--);
+    }
+
+    document.getElementById("typing").innerText = current;
+
+    if(j == text[i].length) isDeleting = true;
+    if(j == 0 && isDeleting) {
+      isDeleting = false;
+      i++;
+    }
+  } else {
+    i = 0;
+  }
+
+  setTimeout(type, 100);
+}
+
+type();
+
+/ Scroll Animation */
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+
+</script>
 
 </body>
 </html>
